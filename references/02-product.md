@@ -106,7 +106,7 @@
 
 | 操作 | 方法 | 路径 | 说明 |
 | --- | --- | --- | --- |
-| 列表 | POST | `/product/product-stocks/list` | 可按 supplier_order_id 筛选 |
+| 列表 | POST | `/product/product-stocks/list` | **必须传 `product_sku_id` 才能查到数据**，可选传 `warehouse_id`、`supplier_order_id` 进一步过滤 |
 | 列表（含销售占用） | POST | `/product/product-stocks/list-with-sale-stock` | 创建销售订单选品时使用 |
 | 更新 | POST | `/product/product-stocks/{id}/update` |  |
 | 盘点更新/新建 | POST | `/product/product-stocks/inventory-update` | 盘点场景专用 |

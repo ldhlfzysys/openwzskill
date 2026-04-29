@@ -59,6 +59,8 @@
 | --- | --- | --- | --- |
 | 列表 | POST | `/product/products/list` | 支持 name、category_ids、country_code 等筛选 |
 | 缓存同步 | GET | `/product/products/cache-sync` | Query: `local_product_version`、`local_product_sku_version`；返回全量商品与 SKU（含 stocks、售价、折扣），前端以此增量同步 |
+
+> ⚠️ **注意**：`cache-sync` 返回的 `stocks` 数组中**没有 `available_stock` 字段**，每个库存对象的字段为 `id, warehouse_id, expire_time, stock, block_stock, pre_stock, shelf_position`。可用库存须用 `stock - block_stock` 计算。`product-stocks/list` 单独接口才有 `available_stock` 字段，但需传 `product_sku_id` 才能查到数据。
 | 批量获取 | POST | `/product/products/batch-get` | Body: `{ "ids": [1,2,3] }`，最多 100 个 |
 | 创建 | POST | `/product/products/create` |  |
 | 详情 | GET | `/product/products/{id}` |  |
